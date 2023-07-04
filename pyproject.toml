@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "python-project-50-oop-edition"
+version = "0.1.0"
+description = "Difference Analyzer"
+authors = ["Naumenko_Sergey <sergei.naumencko@yandex.ru>"]
+repository = 'https://github.com/SergeiNaum/python-project-50'
+license = "\"MIT License\""
+readme = "README.md"
+packages = [{include = "python_project_50_oop_edition"}]
+
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-cov = "^4.0.0"
+flake8 = "^6.0.0"
+pyyaml = "^6.0"
+aiofiles = "^23.1.0"
+pytest-asyncio = "^0.21.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+gendiff = "gendiff.scripts.gendiff:main"
