@@ -1,7 +1,7 @@
 """Test json formatter (for tree structure)"""
 
 import pytest
-from gendif import generate_diff
+from gendiff_package.gendiff import GenerateDifference
 
 FORMATTER = 'json'
 

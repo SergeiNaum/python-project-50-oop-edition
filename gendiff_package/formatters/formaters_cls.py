@@ -3,21 +3,16 @@ from gendiff_package.formatters.json import JsonFormat
 from gendiff_package.formatters.plain import PlainFormat
 
 
-
-
 class FormattersUnit:
 
+    @staticmethod
+    def format_stylish(tree):
+        return Stylish.format_(tree)
 
+    @staticmethod
+    def format_json(tree):
+        return JsonFormat.format_(tree)
 
-    def format_stylish(self):
-        return Stylish.format_
-
-
-
-    def format_json(self):
-        return JsonFormat.format_
-
-
-
-    def format_plain(self):
-        return PlainFormat.format_
+    @staticmethod
+    def format_plain(tree):
+        return PlainFormat.format_(tree)

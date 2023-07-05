@@ -1,10 +1,10 @@
 """Build internal tree view"""
 
+
 class Tree:
 
-
     @classmethod
-    def make_tree(cls, dictionary1: dict, dictionary2: dict) -> list:
+    def __make_tree(cls, dictionary1: dict, dictionary2: dict) -> list:
         result = []
         all_keys = dictionary1.keys() | dictionary2.keys()
 
@@ -32,7 +32,7 @@ class Tree:
                 result.append({
                     'key': key,
                     'type': 'nested',
-                    'children': cls.make_tree(child_1, child_2)})
+                    'children': cls.__make_tree(child_1, child_2)})
 
             elif child_1 == child_2:
                 result.append({
@@ -47,12 +47,10 @@ class Tree:
                         'new_value': child_2})
         return result
 
-
     @classmethod
     def build_tree(cls, dictionary1: dict, dictionary2: dict) -> dict:
-
         return \
             {
                 'type': 'root',
-                'children': cls.make_tree(dictionary1, dictionary2)
+                'children': cls.__make_tree(dictionary1, dictionary2)
             }

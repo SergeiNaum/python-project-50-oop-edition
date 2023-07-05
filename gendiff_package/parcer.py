@@ -2,6 +2,7 @@
 import json
 import yaml
 
+
 class Parser:
 
     @staticmethod

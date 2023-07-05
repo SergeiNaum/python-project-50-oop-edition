@@ -47,19 +47,16 @@ def file_tree1_json_path():
     return file_path
 
 
-
 @pytest.fixture(scope='session')
 def file_tree2_json_path():
     file_path = pathlib.Path(__file__).parent / FIXTURES_FOLDER / 'file2_tree.json'
     return file_path
 
 
-
 @pytest.fixture(scope='session')
 def file_tree1_yml_path():
     file_path = pathlib.Path(__file__).parent / FIXTURES_FOLDER / 'file1_tree.yml'
     return file_path
-
 
 
 @pytest.fixture(scope='session')
