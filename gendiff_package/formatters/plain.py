@@ -24,7 +24,8 @@ class PlainFormat:
             return result
 
         if node['type'] == 'nested':
-            lines = map(lambda child: cls.__iter_(child, f"{current_path}."), children)
+            lines = map(lambda child: cls.__iter_(
+                                        child, f"{current_path}."), children)
             result = "\n".join(filter(bool, lines))
             return result
 
