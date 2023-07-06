@@ -3,7 +3,7 @@
 import pytest
 from gendiff_package.gendiff import GenerateDifference
 
-FORMATTER = 'stylish_plain'
+FORMATTER = 'stylish_plain.py'
 
 
 @pytest.mark.asyncio

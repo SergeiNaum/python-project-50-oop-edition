@@ -3,7 +3,7 @@
 import pytest
 from gendiff_package.gendiff import GenerateDifference
 
-FORMATTER = 'json'
+FORMATTER = 'json.py'
 
 
 @pytest.mark.asyncio
