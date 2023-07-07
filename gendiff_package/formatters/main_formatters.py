@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from colorama import Fore, Style
 
+
 class Formatter(ABC):
     """Абстрактный класс форматирования (base class)"""
 
@@ -8,6 +9,7 @@ class Formatter(ABC):
     GREEN = Fore.GREEN
     WHITE = Fore.LIGHTWHITE_EX
     RESET = Style.RESET_ALL
+    MAGENTA = Fore.MAGENTA
 
     @classmethod
     @abstractmethod
@@ -28,5 +30,5 @@ class Formatter(ABC):
         return f"{color}{value}{cls.RESET}"
 
     @classmethod
-    def colored_formated_str(cls, item, depth):
-        return f"{cls.WHITE}{cls.to_string(item, depth)}{cls.RESET}"
+    def colored_formated_str(cls, item, depth=0, color=WHITE):
+        return f"{color}{cls.to_string(item, depth)}{cls.RESET}"

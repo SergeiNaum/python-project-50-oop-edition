@@ -32,8 +32,6 @@ class Stylish(Formatter):
 
         return value
 
-
-
     @classmethod
     def iter_(cls, node: dict, depth=0) -> str:
         children = node.get('children')
@@ -41,18 +39,19 @@ class Stylish(Formatter):
         MINUS = cls.colored_string('-', cls.RED)
         PLUS = cls.colored_string('+', cls.GREEN)
         key = cls.colored_string(node.get('key'), cls.WHITE)
+        unchanged = cls.colored_formated_str(node.get('value'), depth, color=cls.MAGENTA)  # noqa: E501
+        key_unchanged = cls.colored_string(node.get('key'), cls.MAGENTA)
         formatted_value = cls.colored_formated_str(node.get('value'), depth)
-        formatted_value1 = cls.colored_formated_str(node.get('old_value'), depth)
-        formatted_value2 = cls.colored_formated_str(node.get('new_value'), depth)
-
+        formatted_value1 = cls.colored_formated_str(node.get('old_value'), depth)  # noqa: E501
+        formatted_value2 = cls.colored_formated_str(node.get('new_value'), depth)  # noqa: E501
 
         formatted_values = {
-            'root': lambda: f'{{\n{"".join(map(lambda child: cls.iter_(child, depth + 1), children))}\n}}',
-            'nested': lambda: '{}  {}:  {{{}\n{}}}'.format(indent, key, "".join(map(lambda child: "\n{}".format(cls.iter_(child, depth + 1)).rstrip(), children)), indent),
-            'changed': lambda: f'{indent}{MINUS} {key}: {formatted_value1}\n{indent}{PLUS} {key}:  {formatted_value2}',
-            'unchanged': lambda: f'{indent}  {key}: {formatted_value}',
-            'removed': lambda: f'{indent}{MINUS} {key}:  {formatted_value}',
-            'added': lambda: f'{indent}{PLUS} {key}:  {formatted_value}',
+            'root': lambda: f'{{\n{"".join(map(lambda child: cls.iter_(child, depth + 1), children))}\n}}',  # noqa: E501
+            'nested': lambda: '{}  {}:  {{{}\n{}}}'.format(indent, key, "".join(map(lambda child: "\n{}".format(cls.iter_(child, depth + 1)).rstrip(), children)), indent),  # noqa: E501
+            'changed': lambda: f'{indent}{MINUS} {key}: {formatted_value1}\n{indent}{PLUS} {key}:  {formatted_value2}',  # noqa: E501
+            'unchanged': lambda: f'{indent}  {key_unchanged}: {unchanged}',  # noqa: E501
+            'removed': lambda: f'{indent}{MINUS} {key}:  {formatted_value}',  # noqa: E501
+            'added': lambda: f'{indent}{PLUS} {key}:  {formatted_value}',  # noqa: E501
         }
         return formatted_values[node['type']]()
 
