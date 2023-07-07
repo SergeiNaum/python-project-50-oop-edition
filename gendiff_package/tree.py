@@ -1,8 +1,5 @@
-"""Build internal tree view"""
-
-
 class Tree:
-
+    """Build internal tree view"""
     @classmethod
     def __make_tree(cls, dictionary1: dict, dictionary2: dict) -> list:
         result = []

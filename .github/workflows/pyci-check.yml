@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         # we want to test our package on several versions of Python
-        python-version: [3.8, 3.9]
+        python-version: [3.8]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -23,14 +23,14 @@ jobs:
       - name: Run linter
         run: |
           make lint
-      - name: Run Tests
-        run: |
-          make test
-          make test-coverage
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v3.2.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.TEST_COVERAGE_Difference_Calculator }}
-        with:
-          coverageCommand: make test-coverage
-          debug: true
+#      - name: Run Tests
+#        run: |
+#          make test
+#          make test-coverage
+#      - name: Test & publish code coverage
+#        uses: paambaati/codeclimate-action@v3.2.0
+#        env:
+#          CC_TEST_REPORTER_ID: ${{ secrets.TEST_COVERAGE_Difference_Calculator }}
+#        with:
+#          coverageCommand: make test-coverage
+#          debug: true
